@@ -17,6 +17,7 @@ import {
   serverTimestamp,
 } from "@firebase/firestore";
 import { getDownloadURL, ref, uploadString } from "@firebase/storage";
+import { useSession } from "next-auth/react";
 //git branch changed
 function Input() {
   const [input, setInput] = useState("");
@@ -24,16 +25,17 @@ function Input() {
   const [showEmojis, setShowEmojis] = useState(false);
   const [loading, setLoading] = useState(false);
   const filePickerRef = useRef(null);
+  const { data: session } = useSession();
 
   const sendPost = async () => {
     if (loading) return;
     setLoading(true);
 
     const docRef = await addDoc(collection(db, "posts"), {
-      // id: session.user.uid,
-      // username: session.user.name,
-      // userImg: session.user.image,
-      // tag: session.user.tag,
+      id: session.user.uid,
+      username: session.user.name,
+      userImg: session.user.image,
+      tag: session.user.tag,
       text: input,
       timestamp: serverTimestamp(),
     });
@@ -81,7 +83,7 @@ function Input() {
       overflow-y-scroll scrollbar-hide ${loading && "opacity-60"}`}
     >
       <img
-        src="https://pbs.twimg.com/profile_images/1504145349229035520/KZsp4zM0_400x400.jpg"
+        src={session.user.image}
         alt=""
         className="h-11 w-11 rounded-full cursor-pointer"
       />
