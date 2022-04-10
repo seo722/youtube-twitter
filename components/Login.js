@@ -10,7 +10,7 @@ function Login({ providers }) {
         height={150}
         objectFit="contain"
       />
-      <div>
+      <div className="flex flex-col items-center">
         {Object.values(providers).map((provider) => (
           <div key={provider.name}>
             {/* https://devdojo.com/tailwindcss/buttons#_ */}
