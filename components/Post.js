@@ -55,7 +55,6 @@ function Post({ id, post, postPage }) {
   useEffect(
     () =>
       onSnapshot(collection(db, "posts", id, "likes"), (snapshot) => {
-        console.log(snapshot.docs);
         setLikes(snapshot.docs);
       }),
     [db, id]

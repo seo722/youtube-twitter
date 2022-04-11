@@ -31,7 +31,7 @@ function Feed() {
   return (
     <div
       className="text-white flex-grow border-l border-r
-  border-gray-700 max-w-xl sm:ml-[73px] xl:ml-[370px]"
+  border-gray-700 max-w-2xl sm:ml-[73px] xl:ml-[370px]"
     >
       <div
         className="text-[#d9d9d9] flex items-center 
